@@ -1,8 +1,15 @@
 import React from "react";
-import "./App.css";
+
+import Header from "./components/Header";
+
+import "./App.scss";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export default App;
