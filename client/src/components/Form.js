@@ -1,12 +1,26 @@
-import React, { useState } from "react";
-import Button from "./Button";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 export default function Form() {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
+  const { addTransaction } = useContext(GlobalContext);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    const newTransaction = {
+      id: Math.floor(Math.random() * 10000),
+      text,
+      amount: +amount
+    };
+
+    addTransaction(newTransaction);
+    setText("");
+    setAmount(0);
+  };
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={onSubmit}>
       <div className="form__group">
         <label htmlFor="text" className="form__label">
           Text
@@ -32,7 +46,9 @@ export default function Form() {
           placeholder="Enter amount..."
         />
       </div>
-      <Button />
+      <button type="submit" className="btn">
+        Add transaction
+      </button>
     </form>
   );
 }
