@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 
 export default function Form() {
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState(0);
+
   return (
     <form className="form">
       <div className="form__group">
@@ -10,6 +13,8 @@ export default function Form() {
         </label>
         <input
           type="text"
+          value={text}
+          onChange={({ target }) => setText(target.value)}
           className="form__input"
           placeholder="Enter text..."
         />
@@ -21,6 +26,8 @@ export default function Form() {
         </label>
         <input
           type="number"
+          value={amount}
+          onChange={({ target }) => setAmount(target.value)}
           className="form__input"
           placeholder="Enter amount..."
         />
