@@ -1,4 +1,5 @@
 import React from "react";
+import { GlobalProvider } from "./context/GlobalState";
 
 import Header from "./components/Header";
 import Balance from "./components/Balance";
@@ -10,13 +11,15 @@ import "./App.scss";
 
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <Balance />
-      <Summary />
-      <TransactionList />
-      <AddNewTransaction />
-    </div>
+    <GlobalProvider>
+      <div className="container">
+        <Header />
+        <Balance />
+        <Summary />
+        <TransactionList />
+        <AddNewTransaction />
+      </div>
+    </GlobalProvider>
   );
 }
 
