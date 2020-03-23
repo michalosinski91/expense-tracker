@@ -4,7 +4,6 @@ import { GlobalContext } from "../context/GlobalState";
 
 export default function TransactionList() {
   const { transactions } = useContext(GlobalContext);
-  console.log(transactions);
 
   return (
     <div className="history">
